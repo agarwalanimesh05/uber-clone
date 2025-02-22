@@ -1,7 +1,8 @@
-import NavigateCard from "./NavigateCard";
-import React from "react";
-import RideOptionsCard from "./RideOptionsCard";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import NavigateCard from './NavigateCard';
+import RideOptionsCard from './RideOptionsCard';
 
 export type StackList = {
   NavigateCard: undefined;

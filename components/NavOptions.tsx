@@ -1,14 +1,13 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-
 import { Icon } from '@rneui/themed';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
-import { StackList } from './HomeNavigation';
-import { selectOrigin } from '../store/slices/navigationSlice';
 import tw from 'twrnc';
-
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+
+import { StackList } from './HomeNavigation';
+import { selectOrigin } from '../store/slices/navigationSlice';
 
 const NavOptions = () => {
   const navigation = useNavigation<HomeScreenProp>();

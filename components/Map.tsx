@@ -1,21 +1,25 @@
 import MapView, { Marker } from 'react-native-maps';
 import React, { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import MapViewDirections from 'react-native-maps-directions';
+import tw from 'twrnc';
+
+// import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
   selectDestination,
   selectOrigin,
   setTravelTimeInfo,
 } from '../store/slices/navigationSlice';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { GOOGLE_MAPS_API_KEY } from '@env';
-import MapViewDirections from 'react-native-maps-directions';
-import tw from 'twrnc';
 
 const Map = () => {
   const dispatch = useDispatch();
+
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
+
   const mapRef = useRef<MapView>(null);
+
+  const env = process.env;
 
   useEffect(() => {
     if (!origin || !destination) return;
@@ -29,16 +33,18 @@ const Map = () => {
     if (!origin || !destination) return;
 
     const getTravelTime = async () => {
-      const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_API_KEY}`;
+      const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&key=${env.GOOGLE_MAPS_API_KEY}`;
+
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+
+      console.log(JSON.stringify(data));
 
       dispatch(setTravelTimeInfo(data.rows[0].elements[0]));
     };
 
     getTravelTime();
-  }, [origin, destination, GOOGLE_MAPS_API_KEY]);
+  }, [origin, destination, env.GOOGLE_MAPS_API_KEY]);
 
   return (
     <MapView
@@ -50,12 +56,13 @@ const Map = () => {
         longitudeDelta: 0.005,
       }}
       style={tw`flex-1`}
+      testID="MapView"
     >
       {origin && destination && (
         <MapViewDirections
           origin={origin.description}
           destination={destination.description}
-          apikey={GOOGLE_MAPS_API_KEY}
+          apikey={env?.GOOGLE_MAPS_API_KEY || 'test'}
           strokeWidth={3}
           strokeColor="blue"
           lineDashPattern={[0]}

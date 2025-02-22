@@ -1,8 +1,9 @@
-import EatsScreen from "../screens/EatsScreen";
-import HomeScreen from "../screens/HomeScreen";
-import MapScreen from "../screens/MapScreen";
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import EatsScreen from '../screens/EatsScreen';
+import HomeScreen from '../screens/HomeScreen';
+import MapScreen from '../screens/MapScreen';
 
 export type StackList = {
   HomeScreen: undefined;

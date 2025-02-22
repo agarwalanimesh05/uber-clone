@@ -26,6 +26,7 @@ const RideOptionsCard = () => {
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={tw`absolute top-1 left-0 px-5 rounded-full`}
+          testID="backButton"
         >
           <Icon
             name={Platform.OS === 'ios' ? 'ios-chevron-back' : 'arrow-back'}

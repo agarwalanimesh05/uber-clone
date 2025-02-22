@@ -1,17 +1,17 @@
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
-import {
-  selectOrigin,
-  setDestination,
-  setOrigin,
-} from '../store/slices/navigationSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { HomeScreenProp } from './NavOptions';
 import { Point } from 'react-native-google-places-autocomplete';
 import React from 'react';
 import tw from 'twrnc';
 import { useNavigation } from '@react-navigation/native';
 import { Icon } from '@rneui/themed';
+
+import {
+  selectOrigin,
+  setDestination,
+  setOrigin,
+} from '../store/slices/navigationSlice';
+import { HomeScreenProp } from './NavOptions';
 
 const NavFavorites = ({ shouldSetOrigin }: { shouldSetOrigin?: boolean }) => {
   const dispatch = useDispatch();
