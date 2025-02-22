@@ -33,7 +33,7 @@ const NavigateCard = () => {
               key: GOOGLE_MAPS_API_KEY,
               language: 'en',
             }}
-            onPress={(data, details = null) => {
+            onPress={(data, details) => {
               dispatch(
                 setDestination({
                   location: details?.geometry.location,

@@ -1,14 +1,14 @@
 import { Image, View } from 'react-native';
-import { setDestination, setOrigin } from '../store/slices/navigationSlice';
-
-import { GOOGLE_MAPS_API_KEY } from '@env';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import NavFavorites from '../components/NavFavorites';
-import NavOptions from '../components/NavOptions';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import tw from 'twrnc';
 import { useDispatch } from 'react-redux';
+
+import { setDestination, setOrigin } from '../store/slices/navigationSlice';
+import { GOOGLE_MAPS_API_KEY } from '@env';
+import NavFavorites from '../components/NavFavorites';
+import NavOptions from '../components/NavOptions';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ const HomeScreen = () => {
           source={{
             uri: 'https://links.papareact.com/gzs',
           }}
+          testID="image"
         />
         <GooglePlacesAutocomplete
           nearbyPlacesAPI="GooglePlacesSearch"
@@ -29,7 +30,7 @@ const HomeScreen = () => {
           enablePoweredByContainer={false}
           minLength={2}
           fetchDetails={true}
-          onPress={(data, details = null) => {
+          onPress={(data, details) => {
             dispatch(
               setOrigin({
                 location: details?.geometry.location,

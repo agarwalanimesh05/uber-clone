@@ -1,18 +1,19 @@
-import { Image, Text, View } from "react-native";
+import { Image, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { navData } from "../components/NavOptions";
+import { navData } from '../components/NavOptions';
 
 const EatsScreen = () => {
   return (
     <SafeAreaView
-      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <View>
         <Image
           source={{ uri: navData[1].image }}
-          style={{ width: 120, height: 120, resizeMode: "contain" }}
+          style={{ width: 120, height: 120, resizeMode: 'contain' }}
+          testID="image"
         />
       </View>
       <Text style={{ marginTop: 24, fontSize: 16 }}>
