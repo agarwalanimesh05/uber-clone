@@ -22,10 +22,10 @@ const RideOptionsCard = () => {
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
-      <View style={tw``}>
+      <View style={tw`mt-4 flex-row ml-5 `}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          style={tw`absolute top-1 left-0 px-5 rounded-full`}
+          style={tw`rounded-full`}
           testID="backButton"
         >
           <Icon
@@ -33,7 +33,7 @@ const RideOptionsCard = () => {
             type="ionicon"
           />
         </TouchableOpacity>
-        <Text style={tw`text-center mb-5 text-lg`}>
+        <Text style={tw`text-center mb-5 text-lg flex-1`}>
           Select a Ride - {travelTimeInformation?.distance?.text}
         </Text>
       </View>
