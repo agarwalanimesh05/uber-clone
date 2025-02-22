@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import MapViewDirections from 'react-native-maps-directions';
 import tw from 'twrnc';
 
-// import { GOOGLE_MAPS_API_KEY } from '@env';
+import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
   selectDestination,
   selectOrigin,
@@ -19,8 +19,6 @@ const Map = () => {
 
   const mapRef = useRef<MapView>(null);
 
-  const env = process.env;
-
   useEffect(() => {
     if (!origin || !destination) return;
 
@@ -33,7 +31,7 @@ const Map = () => {
     if (!origin || !destination) return;
 
     const getTravelTime = async () => {
-      const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&key=${env.GOOGLE_MAPS_API_KEY}`;
+      const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_API_KEY}`;
 
       const response = await fetch(url);
       const data = await response.json();
@@ -44,7 +42,7 @@ const Map = () => {
     };
 
     getTravelTime();
-  }, [origin, destination, env.GOOGLE_MAPS_API_KEY]);
+  }, [origin, destination, GOOGLE_MAPS_API_KEY]);
 
   return (
     <MapView
@@ -62,7 +60,7 @@ const Map = () => {
         <MapViewDirections
           origin={origin.description}
           destination={destination.description}
-          apikey={env?.GOOGLE_MAPS_API_KEY || 'test'}
+          apikey={GOOGLE_MAPS_API_KEY}
           strokeWidth={3}
           strokeColor="blue"
           lineDashPattern={[0]}
