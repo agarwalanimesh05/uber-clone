@@ -2,6 +2,18 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
+# Environment setup
+
+Create .env file which should look like
+
+GOOGLE_MAPS_API_KEY="Your Google Maps Api Key"
+
+Need to pass API key inside android\app\src\main\AndroidManifest.xml Inside <application>
+
+<meta-data
+  android:name="com.google.android.geo.API_KEY"
+  android:value="Your Google Maps Api Key" />
+
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
 ## Step 1: Start Metro

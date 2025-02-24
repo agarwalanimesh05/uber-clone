@@ -30,13 +30,13 @@ const Map = () => {
   useEffect(() => {
     if (!origin || !destination) return;
 
+    const apiKey = GOOGLE_MAPS_API_KEY;
+
     const getTravelTime = async () => {
-      const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&key=${GOOGLE_MAPS_API_KEY}`;
+      const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin.description}&destinations=${destination.description}&key=${apiKey}`;
 
       const response = await fetch(url);
       const data = await response.json();
-
-      console.log(JSON.stringify(data));
 
       dispatch(setTravelTimeInfo(data.rows[0].elements[0]));
     };
