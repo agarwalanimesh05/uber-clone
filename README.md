@@ -6,13 +6,22 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 Create .env file which should look like
 
+```sh
 GOOGLE_MAPS_API_KEY="Your Google Maps Api Key"
+```
 
-Need to pass API key inside android\app\src\main\AndroidManifest.xml Inside <application>
+Need to pass API key inside android\app\src\main\AndroidManifest.xml
+
+```sh
+<application>
+
 
 <meta-data
   android:name="com.google.android.geo.API_KEY"
   android:value="Your Google Maps Api Key" />
+
+</application>
+```
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
